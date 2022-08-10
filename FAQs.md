@@ -1,5 +1,5 @@
 ## Keywords
-- func,import, package
+- func,import, package,var
 
 ## Buildin functions
 - println
@@ -11,3 +11,11 @@
     2- What is GOARCH?
 
     3- Are Build and Compile same?
+
+#### Numeric
+
+- int,int8,int16,int32,int64
+- uint8,uint16,uint32,uint64
+- float32,float64
+- uintptr
+- complex type 
