@@ -38,6 +38,22 @@ func main() {
 	val = byte(95)
 	fmt.Println("Value of val:", val, "Type of val:", reflect.TypeOf(val))
 
+	var a any = 100
+
+	var b int = 200
+
+	var c float32 = 300.3
+
+	d := a.(int) + b + int(c)
+	fmt.Println("a+b+c as int:", d)
+
+	e := float32(a.(int)) + float32(b) + c
+
+	fmt.Println("a+b+c as float32:", e)
+
+	f := float64(float32(a.(int)) + float32(b) + c)
+	//g := float64(a.(int)) + float64(b) + float64(c)
+	fmt.Println("a+b+c as float64:", f)
 }
 
 // a as any  = 100

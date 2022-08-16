@@ -1,8 +1,8 @@
 ## Keywords
-- const, func, import, package, var
+- const, else, func, if, import, package, return, var
 
 ## Buildin functions
-- print, println
+- complex, print, println
 
 ### Questions
 
