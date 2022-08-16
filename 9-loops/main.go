@@ -33,6 +33,13 @@ func main() {
 		count++
 	}
 
+	// reverse a string
+	rstr := ""
+	for _, v := range str {
+		rstr = string(v) + rstr
+	}
+	fmt.Println(rstr)
+
 }
 
 // 1- find biggest number amoung a,b,c
