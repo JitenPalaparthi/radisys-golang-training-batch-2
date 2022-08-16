@@ -50,4 +50,9 @@ func main() {
 
 	fmt.Println(a, b, c, d)
 
+	//var num5 int =100
+	num6 := 100 // shorthand declaration
+	//age := 39   // unit8 can be used to store age but here it uses int
+
+	fmt.Println("Value of num6", num6, "type of num6:", reflect.TypeOf(num6))
 }
