@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"reflect"
+	"strconv"
+	_ "time" // blank identifier
 )
 
 // type casting
@@ -33,5 +35,31 @@ func main() {
 	fmt.Println("Value of tiny:", tiny, "Type of tiny:", reflect.TypeOf(tiny))
 
 	// type conversion
+
+	num1 := 65
+
+	str1 := string(num1) // not "65"
+	println(str1)
+
+	//str2 := fmt.Sprintf("%v", num1)
+	str2 := fmt.Sprint(num1)
+	println(str2)
+
+	str3 := strconv.Itoa(num1)
+	println(str3)
+
+	str4 := "19000"
+	num2, _ := strconv.Atoi(str4) // _ blank identifier
+	println(num2)
+
+	//  swap
+
+	a, b, c := 100, 200, 300
+	fmt.Println("a:", a, "b:", b, "c:", c)
+	// t := a
+	// a = b
+	// b = t
+	a, b, c = c, a, b // easy swapping
+	fmt.Println("a:", a, "b:", b, "c:", c)
 
 }
