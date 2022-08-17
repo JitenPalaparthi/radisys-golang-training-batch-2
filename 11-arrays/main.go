@@ -24,7 +24,6 @@ func main() {
 		}
 		println()
 	}
-
 }
 
 // Reverse an array
