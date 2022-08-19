@@ -2,7 +2,7 @@
 - break, case, const, continue, else, fallthrough, for, func, if, import, package, range,return,switch, var
 
 ## Buildin functions
-- append, cap, complex, len, make, print, println
+- append, cap, complex, copy, len, make, print, println
 
 ### Questions
 
