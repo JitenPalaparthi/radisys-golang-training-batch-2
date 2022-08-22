@@ -51,3 +51,9 @@
 
     ```go install github.com/JitenPalaparthi/urllinter```
 
+- To do escape analysis
+    ```go build -gcflags="-m" main.go```
+
+- To do escape analysis at run
+    ```go run -gcflags="-m" main.go```
+
