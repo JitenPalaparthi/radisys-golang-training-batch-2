@@ -38,6 +38,8 @@ func main() {
 
 // shapes
 // 		shape
+//			cube
+//				cube.go
 //			rect
 //				rect.go
 //			square
@@ -68,3 +70,12 @@ type T1 struct{}
 func (t1 T1) Display() {
 	fmt.Println("This is an empty struct")
 }
+
+// Calc
+// New function
+// Add Method
+// Sub Method
+// Multiply Method
+// Divide Method
+
+// any type. all must be like methods not like functions
