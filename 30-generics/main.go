@@ -97,5 +97,5 @@ type UType interface {
 }
 
 // type Calc struct
-// A,B fields
+// A,B fields must be generic types
 // Add,Sub,Mul,Div are methods for Calc
