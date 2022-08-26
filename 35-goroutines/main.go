@@ -8,14 +8,16 @@ import (
 func main() {
 	//runtime.GOMAXPROCS(2)
 	go func() {
-		for i := 1; ; i++ {
-			go fmt.Println(i)
+		i := 0
+	loop:
+		go fmt.Println(i)
+		i++
+		if i != 1000000 {
+			goto loop
 		}
-
 	}()
 
 	fmt.Println("CPUs:", runtime.NumCPU())
-
 	fmt.Println("Go routines those are running:", runtime.NumGoroutine())
 	//time.Sleep(time.Millisecond * 5)
 	fmt.Println("end of main")
