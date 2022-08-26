@@ -1,5 +1,5 @@
 ## Keywords
-- break, case, const, continue, else, fallthrough, for, func, if, import, map, package, range, return, switch, var
+- break, case, const, continue, else, fallthrough, for, func, go, if, import, map, package, range, return, switch, var
 
 ## Built in functions
 - append, cap, complex, copy, delete, len, make, new, print, println
