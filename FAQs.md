@@ -1,8 +1,8 @@
 ## Keywords
-- break, case, chan, const, continue,default, else, fallthrough, for, func, go, goto, if, import, interface, map, package, range, return, switch, struct, type, var
+- break, case, chan, const, continue,default,defer,  else, fallthrough, for, func, go, goto, if, import, interface, map, package, range, return, select, switch, struct, type, var
 
 ## Built in functions
-- append, cap, complex, copy, delete, len, make, new, print, println
+- append, cap, close, complex, copy, delete, len, make, new, panic, print, println,recover
 
 ### Questions
 
