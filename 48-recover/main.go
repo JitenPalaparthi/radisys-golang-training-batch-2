@@ -1,6 +1,7 @@
 package main
 
 import (
+	"demo/person"
 	"fmt"
 )
 
@@ -17,7 +18,14 @@ func main() {
 	ln := new(string)
 	*ln = "p"
 	finalName(fn, ln)
-	finalName(nil, nil)
+	func() {
+		defer recoverMe()
+		fullName := person.FullName(fn, nil)
+		if fullName != nil {
+			fmt.Println(fullName)
+		}
+	}()
+	//finalName(nil, nil)
 	greet()
 	//runtime.Goexit()
 	// end of main func to be executed here and hence defer
