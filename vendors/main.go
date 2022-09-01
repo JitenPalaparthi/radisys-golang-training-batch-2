@@ -37,6 +37,9 @@ func main() {
 	vdb := new(dal.VendorDB)
 	vdb.DB = db
 
+	// vfdb := new(filedb.VendorFDB)
+	// vfdb.FileName = "vendors.fdb"
+
 	r := gin.Default()
 
 	r.GET("/", func(ctx *gin.Context) {
@@ -49,8 +52,15 @@ func main() {
 
 	vhandler := new(handlers.VendorHandler)
 	vhandler.IVendor = vdb
-
-	r.POST("v1/vendor", vhandler.Create())
+	//vhandler.IVendor = vfdb
+	v1 := r.Group("/v1/public/vendor")
+	{
+		v1.POST("/add", vhandler.Create())
+		v1.GET("/:id", vhandler.GetBy())
+		v1.GET("/all", vhandler.GetAll())
+		v1.PUT("/:id", vhandler.UpdateBy())
+		v1.DELETE("/:id", vhandler.DeleteBy())
+	}
 
 	r.Run(":" + PORT)
 
