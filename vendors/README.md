@@ -14,3 +14,9 @@
 - Message Broker Kafka
 
 - Containerise it and run it in Kubernetes
+
+## Database
+
+- postgres
+
+    ```docker run -d --name pgvendorsdb -e POSTGRES_PASSWORD=admin123 -e POSTGRES_USER=admin -e POSTGRES_DB=vendorsdb -p 5432:5432 postgres```
