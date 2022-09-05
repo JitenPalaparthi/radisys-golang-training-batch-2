@@ -1,0 +1,12 @@
+mode: set
+vendors/models/vendor.go:25.35,26.18 1 1
+vendors/models/vendor.go:30.2,30.19 1 1
+vendors/models/vendor.go:33.2,33.23 1 1
+vendors/models/vendor.go:36.2,36.12 1 1
+vendors/models/vendor.go:26.18,29.3 1 1
+vendors/models/vendor.go:30.19,32.3 1 1
+vendors/models/vendor.go:33.23,35.3 1 1
+vendors/models/vendor.go:39.44,41.2 1 0
+vendors/models/vendor.go:43.43,44.41 1 0
+vendors/models/vendor.go:44.41,46.3 1 0
+vendors/models/vendor.go:46.8,48.3 1 0

@@ -5,7 +5,6 @@ import (
 	"strconv"
 	"time"
 	"vendors/interfaces"
-	"vendors/mb"
 	"vendors/models"
 
 	"github.com/gin-gonic/gin"
@@ -13,7 +12,6 @@ import (
 
 type VendorHandler struct {
 	IVendor interfaces.IVendor
-	Conn    []string
 }
 
 func (vh *VendorHandler) Create() func(*gin.Context) {
@@ -45,7 +43,7 @@ func (vh *VendorHandler) Create() func(*gin.Context) {
 			ctx.Abort()
 			return
 		}
-		err = mb.Publish(vh.Conn, "vendors.created", *vendor)
+
 		ctx.JSON(http.StatusCreated, v)
 		ctx.Abort()
 	}

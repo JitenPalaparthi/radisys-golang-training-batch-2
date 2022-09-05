@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option go_package = "vendors/protos";
+
+package vendor;
+
+service VendorService{
+  rpc Add(Vendor) returns (VendorResponse) {} 
+  //rpc Hello(HelloRequest)returns(stream HelloResponse){}
+}
+
+// message HelloRequest{
+//     string Msg=1;
+// }
+
+// message HelloResponse{
+//     string Msg=1;
+// }
+message Vendor{
+    int32 ID=8;
+   string Name=1;
+   string Email=2;
+   string ContactNo=3;
+   string Website=4;
+   string Address=5;
+   string Status=6;
+   int64  LastModified=7;
+
+}
+
+message VendorResponse{
+    int32 Code=1;
+    string Message=2;
+    Vendor VendorOut=3;
+}
+
+
+
+
+
+

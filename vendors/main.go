@@ -2,10 +2,13 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"net/http"
 	"os"
 	"vendors/dal"
 	"vendors/handlers"
+
+	"github.com/golang/glog"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,12 +16,27 @@ import (
 var (
 	PORT string
 	DSN  string
+	// INFO|WARNING|ERROR|FATAL
 )
+
+func usage() {
+	fmt.Fprintf(os.Stderr, "usage: example -stderrthreshold=[INFO|WARNING|ERROR|FATAL] -log_dir=[string]\n")
+	flag.PrintDefaults()
+	os.Exit(2)
+}
+
+func init() {
+	flag.Usage = usage
+	// NOTE: This next line is key you have to call flag.Parse() for the command line
+	// options or "flags" that are defined in the glog module to be picked up.
+	//flag.Parse()
+}
 
 func main() {
 
 	flag.StringVar(&PORT, "port", "50082", "--port 50082")
 	flag.StringVar(&DSN, "db", "host=localhost user=admin password=admin123 dbname=vendorsdb port=5432 sslmode=disable TimeZone=Asia/Shanghai", "--db host=localhost user=admin password=admin123 dbname=vendorsdb port=5432 sslmode=disable TimeZone=Asia/Shanghai")
+	flag.Set("stderrthreshold", "INFO")
 	flag.Parse()
 
 	if port := os.Getenv("PORT"); port != "" {
@@ -28,12 +46,13 @@ func main() {
 	if dbConn := os.Getenv("DB_CONN"); dbConn != "" {
 		DSN = dbConn
 	}
-
+	glog.Info("Connecting to database...")
 	db, err := dal.GetConnection(DSN)
 	if err != nil {
-		panic(err)
+		glog.Fatal("Database Connection:", err.Error())
 	}
 
+	glog.Info("instantiating vendorDB")
 	vdb := new(dal.VendorDB)
 	vdb.DB = db
 

@@ -1,9 +1,9 @@
 package dal
 
 import (
-	"log"
 	"time"
 
+	"github.com/golang/glog"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -20,7 +20,7 @@ RETRY:
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		if count <= MAXRETRIES {
-			log.Println("Trying to connect to database-->", count)
+			glog.Warning("Trying to connect to database-->", count)
 			time.Sleep(time.Second * time.Duration(MAXTIME))
 			goto RETRY
 		} else {

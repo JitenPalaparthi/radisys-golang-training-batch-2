@@ -62,3 +62,26 @@ SAGA Pattern
 - zookeeper: communication between , discovery of kafka brokers
 
 - Go client
+
+
+- To generate proto files for go```
+
+    ```protoc --go_out=. --go_opt=paths=source_relative \
+    --go-grpc_out=. --go-grpc_opt=paths=source_relative \
+    protos/vendor.proto```
+
+- To run all tests
+
+    ```go test ./... -v```
+
+- To run tests for a package and cover code
+
+    ```go test -timeout 30s -coverprofile=cover.out vendors/models```
+
+- To Open Code coverage in html file
+
+    ```go tool cover -html cover.out```
+
+- To test only one function
+
+    ```go test -timeout 30s -run ^TestValidatePositive$ vendors/models```

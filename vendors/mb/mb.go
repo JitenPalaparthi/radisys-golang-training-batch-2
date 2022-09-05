@@ -2,7 +2,7 @@ package mb
 
 import (
 	"context"
-	"strconv"
+	"log"
 	"vendors/models"
 
 	"github.com/segmentio/kafka-go"
@@ -12,17 +12,35 @@ type DATA interface {
 	models.Vendor
 }
 
-func Publish[T DATA](conn []string, topic string, data T) error {
+func Publish(conn []string, topic string, key []byte, value []byte) error {
 	w := kafka.NewWriter(kafka.WriterConfig{
 		Brokers: conn,
 		Topic:   topic,
 		// assign the logger to the writer
 		//Logger: mb.Logger,
 	})
-	val, err := data.ToBytes()
-	if err != nil {
-		return err
-	}
-	return w.WriteMessages(context.TODO(), kafka.Message{Key: []byte(strconv.Itoa(data.ID)), Value: val})
+	defer w.Close()
+	return w.WriteMessages(context.TODO(), kafka.Message{Key: key, Value: value})
+}
 
+func Subscribe(conn []string, topic string) <-chan []byte {
+	chanMsg := make(chan []byte)
+	r := kafka.NewReader(kafka.ReaderConfig{
+		Brokers: conn,
+		Topic:   topic,
+		// assign the logger to the writer
+		//Logger: mb.Logger,
+	})
+	go func() {
+		for {
+			msg, err := r.ReadMessage(context.TODO())
+			if err != nil {
+				log.Println(err)
+			} else {
+				//fmt.Println(msg.Value)
+				chanMsg <- msg.Value
+			}
+		}
+	}()
+	return chanMsg
 }
